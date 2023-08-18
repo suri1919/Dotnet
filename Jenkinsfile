@@ -6,10 +6,10 @@ pipeline {
       steps {
 		sh '''
 		 whoami
-		 aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com
-		 docker build -t docker-automation .	
-		 docker tag docker-automation:latest 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com/docker-automation:${BUILD_NUMBER}
-		 docker push 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com/docker-automation:${BUILD_NUMBER}
+		 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 855991486920.dkr.ecr.ap-south-1.amazonaws.com
+		 docker build -t dotnet-application .	
+		 docker tag dotnet-application:latest 855991486920.dkr.ecr.ap-south-1.amazonaws.com/dotnet-application:${BUILD_NUMBER}
+		 docker push 855991486920.dkr.ecr.ap-south-1.amazonaws.com/dotnet-application:${BUILD_NUMBER}
 		  '''
 	     }	         
 	   }
@@ -17,7 +17,7 @@ pipeline {
     stage('Deploy docker'){
       steps {
 		sh '''
-			  ssh -i /var/lib/jenkins/publickey.pem -o StrictHostKeyChecking=no ubuntu@ec2-54-179-15-164.ap-southeast-1.compute.amazonaws.com 'bash -s' < ./deploy.sh \${BUILD_NUMBER}
+			  ssh -i /var/lib/jenkins/application.pem -o StrictHostKeyChecking=no ubuntu@ec2-65-2-177-217.ap-south-1.compute.amazonaws.com 'bash -s' < ./deploy.sh \${BUILD_NUMBER}
 			  '''	 
 		    
       		}
