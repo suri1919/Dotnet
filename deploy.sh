@@ -1,6 +1,5 @@
-aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com
-
-docker pull 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com/docker-automation:$1
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 855991486920.dkr.ecr.ap-south-1.amazonaws.com
+docker pull 855991486920.dkr.ecr.ap-south-1.amazonaws.com/dotnet-application:$1
 echo "docker pull succeeded"
 
 docker ps -a
