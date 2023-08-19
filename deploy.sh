@@ -14,4 +14,4 @@ echo "empty docker"
 docker run -itd -p 3000:3000 --name dotnet-app 092101872227.dkr.ecr.ap-southeast-1.amazonaws.com/docker-automation:$1
 
 docker ps -a
-echo "docker container deployed successfully" 
+echo "docker container deployed successfully"
